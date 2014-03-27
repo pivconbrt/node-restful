@@ -26,6 +26,6 @@
   "scripts": {
     "test": "make test"
   },
-  "repository": "git://github.com/baugarten/node-restful",
+  "repository": "git://github.com/pivconbrt/node-restful",
   "main": "index.js"
 }
