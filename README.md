@@ -59,7 +59,7 @@ I will also show some features and use cases for them, how to set up routes, etc
 
 ### API
 
-There are a few functions that are available after we register the mongoose schema. The first one we already saw. 
+There are a few functions that are available after we register the mongoose schema. The first one we already saw.
 
 `.methods([...])` takes a list of methods that should be available on the resource. Future calls to methods will override previously set values
 To disallow `delete` operations, simply run
@@ -67,7 +67,7 @@ To disallow `delete` operations, simply run
 ```js
 Resource.methods(['get', 'post', 'put'])
 ```
-    
+
 We can also run custom routes. We can add custom routes by calling `.route(path, handler)`
 
 ```js
@@ -84,7 +84,7 @@ Resource.route('recommend.get', function(req, res, next) {
 });
 Resource.route('recommend', ['get', 'put', 'delete'], function(req, res, next) { ... });
 ```
-    
+
 Or do some combination of HTTP methods.
 
 Now. Lets say we have to run arbitrary code before or after a route. Lets say we need to hash a password before a POST or PUT operation. Well, easy.
@@ -92,7 +92,7 @@ Now. Lets say we have to run arbitrary code before or after a route. Lets say we
 ```js
 Resource.before('post', hash_password)
   .before('put', hash_password);
-      
+
 function hash_password(req, res, next) {
   req.body.password = hash(req.body.password);
   next();
@@ -108,7 +108,7 @@ Resource.after('get', function(req, res, next) {
   res.locals.bundle.year = tmp;
   next(); // Don't forget to call next!
 });
-    
+
 Resource.after('recommend', do_something); // Runs after all HTTP verbs
 ```
 
